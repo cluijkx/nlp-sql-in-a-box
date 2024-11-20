@@ -10,9 +10,7 @@ from semantic_kernel.connectors.ai.function_call_behavior import FunctionCallBeh
 from semantic_kernel.connectors.ai.open_ai.prompt_execution_settings.azure_chat_prompt_execution_settings import (
     AzureChatPromptExecutionSettings,
 )
-#from semantic_kernel.contents.author_role import AuthorRole
 from semantic_kernel.contents.utils.author_role import AuthorRole
-#from semantic_kernel.contents.finish_reason import FinishReason
 from semantic_kernel.contents import FinishReason
 
 from ..database import Database
