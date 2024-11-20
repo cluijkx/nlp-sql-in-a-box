@@ -1,7 +1,7 @@
 import logging
 
 from azure.identity import DefaultAzureCredential
-from azure.cognitiveservices.speech import SpeechConfig, SpeechRecognizer,SpeechSynthesizer,  ResultReason, CancellationReason
+from azure.cognitiveservices.speech import SpeechConfig, SpeechRecognizer, SpeechSynthesizer, ResultReason, CancellationReason
 from azure.cognitiveservices.speech.audio import AudioConfig, AudioOutputConfig
 
 
@@ -14,6 +14,7 @@ scope = 'https://cognitiveservices.azure.com/.default'
 class Speech:
 
     def __init__(self, credential: DefaultAzureCredential, resource_id: str, region: str) -> None:
+        
         auth_token = 'aad#{}#{}'.format(resource_id, credential.get_token(scope).token)
         
         #logger.debug("auth_token: {}".format(auth_token))
