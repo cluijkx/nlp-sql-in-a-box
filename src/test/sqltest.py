@@ -1,7 +1,7 @@
 import pyodbc
 import struct
 
-from azure.identity import AzureCliCredential
+from azure.identity import DefaultAzureCredential
 
 driver_name = 'ODBC Driver 18 for SQL Server'
 server_name = 'sql-NAHACKATHON-fluts'
@@ -20,7 +20,7 @@ def pyodbc_attrs(access_token: str) -> dict:
 
 
 def get_records():
-    credential = AzureCliCredential()
+    credential = DefaultAzureCredential()
     access_token = credential.get_token('https://database.windows.net/.default').token
     conn = pyodbc.connect(connection_string, attrs_before=pyodbc_attrs(access_token))
     cursor = conn.cursor()
