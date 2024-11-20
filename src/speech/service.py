@@ -12,12 +12,17 @@ scope = 'https://cognitiveservices.azure.com/.default'
 
 
 class Speech:
+
     def __init__(self, credential: DefaultAzureCredential, resource_id: str, region: str) -> None:
         auth_token = 'aad#{}#{}'.format(resource_id, credential.get_token(scope).token)
+        
+        #logger.debug("auth_token: {}".format(auth_token))
+
         speech_config = SpeechConfig(auth_token=auth_token, region=region, speech_recognition_language="en-US")
 
         self._recognizer = SpeechRecognizer(speech_config=speech_config, audio_config=AudioConfig(use_default_microphone=True))
         self._synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config=AudioOutputConfig(use_default_speaker=True))
+
 
     def recognize(self) -> str:
         """
@@ -40,6 +45,7 @@ class Speech:
         logger.info("Recognized text: {}".format(response.text))
 
         return response.text
+
 
     def synthesize(self, text: str) -> None:
         """
