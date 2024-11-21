@@ -15,8 +15,10 @@ class Speech:
 
     def __init__(self, credential: DefaultAzureCredential, resource_id: str, region: str) -> None:
         
-        auth_token = 'aad#{}#{}'.format(resource_id, credential.get_token(scope).token)
-        
+        ad_token = credential.get_token("https://cognitiveservices.azure.com/.default")
+
+        auth_token = "aad#" + resource_id + "#" + ad_token.token
+
         #logger.debug("auth_token: {}".format(auth_token))
 
         speech_config = SpeechConfig(auth_token=auth_token, region=region, speech_recognition_language="en-US")
