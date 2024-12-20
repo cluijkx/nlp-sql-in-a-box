@@ -23,6 +23,8 @@ class Speech:
 
         speech_config = SpeechConfig(auth_token=auth_token, region=region, speech_recognition_language="en-US")
 
+        speech_config.speech_synthesis_voice_name = "en-US-GuyNeural"  # Change to your preferred voice
+
         self._recognizer = SpeechRecognizer(speech_config=speech_config, audio_config=AudioConfig(use_default_microphone=True))
         self._synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config=AudioOutputConfig(use_default_speaker=True))
 

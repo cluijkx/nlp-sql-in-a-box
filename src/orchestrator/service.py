@@ -18,7 +18,7 @@ class Orchestrator:
         """
         Run the orchestrator
         """
-        self.speech_service.synthesize("....Welcome to the Kiosk Bot!! I am here to help you with your queries. I am still learning. So, please bear with me.")
+        self.speech_service.synthesize("....Welcome to the Netaspect Data Assistent!! I am here to help you with your queries. I am still learning. So, please bear with me.")
 
         while True:
             try:
@@ -45,7 +45,7 @@ class Orchestrator:
                 user_input = self.speech_service.recognize()
                 print("User > " + user_input)
                 if user_input != 'Yes.':
-                    self.speech_service.synthesize("Thank you for using the Kiosk Bot. Have a nice day.")
+                    self.speech_service.synthesize("Thank you for using the Netaspect Data Assistent. Have a nice day.")
                     break
             except Exception as e:
                 logger.error("An exception occurred: {}".format(e))
