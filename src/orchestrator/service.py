@@ -18,7 +18,7 @@ class Orchestrator:
         """
         Run the orchestrator
         """
-        self.speech_service.synthesize("....Welcome to the Netaspect Data Assistent!! I am here to help you with your queries. I am still learning. So, please bear with me.")
+        self.speech_service.synthesize("....Welcome to the Netaspect Data Assistent!! I am here to help you with your queries.")
 
         while True:
             try:
