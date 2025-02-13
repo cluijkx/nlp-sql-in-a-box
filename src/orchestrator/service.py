@@ -58,5 +58,6 @@ class Orchestrator:
                     break
             except Exception as e:
                 logger.error("An exception occurred: {}".format(e))
-                self.speech_service.synthesize("An error occurred. Let's try again.")
+                #self.speech_service.synthesize("An error occurred. Let's try again.")
+                print("An error occurred. Let's try again.")
                 continue
