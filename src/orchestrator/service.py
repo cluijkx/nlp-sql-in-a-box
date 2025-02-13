@@ -52,10 +52,11 @@ class Orchestrator:
                 #    self.speech_service.synthesize("Thank you for using the Netaspect Data Assistent. Have a nice day.")
                 #    break
 
-                user_input = input("\nDo you have any other query? Type 'Yes' to continue: ").strip()
-                if user_input.lower() != "yes":
-                    print("Thank you for using the Netaspect Data Assistant. Have a nice day!")
-                    break
+                #user_input = input("\nDo you have any other query? Type 'Yes' to continue: ").strip()
+                #if user_input.lower() != "yes":
+                #    print("Thank you for using the Netaspect Data Assistant. Have a nice day!")
+                #    break
+
             except Exception as e:
                 logger.error("An exception occurred: {}".format(e))
                 #self.speech_service.synthesize("An error occurred. Let's try again.")
