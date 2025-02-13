@@ -18,34 +18,43 @@ class Orchestrator:
         """
         Run the orchestrator
         """
-        self.speech_service.synthesize("....Welcome to the Netaspect Data Assistent!! I am here to help you with your queries.")
+        #self.speech_service.synthesize("....Welcome to the Netaspect Data Assistent!! I am here to help you with your queries.")
+        print("....Welcome to the Netaspect Data Assistant!! I am here to help you with your queries.")
 
         while True:
             try:
-                self.speech_service.synthesize("Please ask your query through the Microphone:")
-                print("Listening:")
+                #self.speech_service.synthesize("Please ask your query through the Microphone:")
+                #print("Listening:")
 
                 # Collect user input
-                user_input = self.speech_service.recognize()
+                #user_input = self.speech_service.recognize()
+                #print("User > " + user_input)
+                user_input = input("\nPlease enter your query: ").strip()
                 print("User > " + user_input)
 
-                # Terminate the loop if the user says "exit"
+                ## Terminate the loop if the user says "exit"
+                # Terminate the loop if the user enters "exit"
                 if user_input == "exit":
                     break
 
                 response = await self.kernel.message(user_input=user_input, chat_history=chat_history)
 
                 print("Assistant > " + response)
-                self.speech_service.synthesize(response)
+                #self.speech_service.synthesize(response)
 
-                self.speech_service.synthesize("Do you have any other query? Say Yes to Continue")
+                #self.speech_service.synthesize("Do you have any other query? Say Yes to Continue")
 
-                # Taking Input from the user
-                print("Listening:")
-                user_input = self.speech_service.recognize()
-                print("User > " + user_input)
-                if user_input != 'Yes.':
-                    self.speech_service.synthesize("Thank you for using the Netaspect Data Assistent. Have a nice day.")
+                ## Taking Input from the user
+                #print("Listening:")
+                #user_input = self.speech_service.recognize()
+                #print("User > " + user_input)
+                #if user_input != 'Yes.':
+                #    self.speech_service.synthesize("Thank you for using the Netaspect Data Assistent. Have a nice day.")
+                #    break
+
+                user_input = input("\nDo you have any other query? Type 'Yes' to continue: ").strip()
+                if user_input.lower() != "yes":
+                    print("Thank you for using the Netaspect Data Assistant. Have a nice day!")
                     break
             except Exception as e:
                 logger.error("An exception occurred: {}".format(e))
