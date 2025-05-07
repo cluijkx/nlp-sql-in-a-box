@@ -1,9 +1,17 @@
 ### SQL SERVER SQL tables, with their properties:
 #
-# ExplorationProduction (WellID, WellName, Location, ProductionDate, ProductionVolume, Operator, FieldName, Reservoir, Depth, APIGravity, WaterCut, GasOilRatio)
+# Intermediary (Reference, VersionNumber, ParentIntermediary, PartyReference, PartySource, I09Number, EMSNumber, ABZMailboxNumber, ExassoMethodPreference, ExcassoPartyPreference)
+# PartyVersion (PartyReference, PartySource, VersionNumber, PartyTypeCode, PartyClass, Name)
+# PolicyComponent (Reference, PolicyNumber, CommencementDate, ExpiryDate, ComponentDefinitionCode)
+# PolicyComponentVersion (PolicyNumber, Reference, PolicyVersionNumber, ComponentDefinitionCode, EvaluationDate, Status, ComponentVariantCode, ComponentVariantVersionNumber, ComponentVariantArrangementCode, ComponentVariantArrangementVersionNumber, ComponentVariantArrangementGroupContract)
+# DifferentIntermediaryProducts ([PartyReference],[PartySource],[PartyVersion],[PartyTypeCode],[PartyClass],[PartyName],[IntermediaryReference],[IntermediaryVersion],[ContractNumber],[ContractVersion],[Status],[ComponentNumber],[ComponentVersion],[ComponentDefinitionCode],[ComponentVariantCode],[ComponentVariantVersionNumber])
 #
 ### A SQL query to find {{$input}}. Please provide only one SQL query and nothing else in a single string. Do not prompt anything else apart from the sql query.
-User: How many locations are there? 
-Assistant: SELECT COUNT(DISTINCT Location) AS NumberOfLocations FROM ExplorationProduction;
+User: How many intermediaries are there? 
+Assistant: SELECT COUNT(DISTINCT Reference) AS NumberOfIntermediaries FROM di.Intermediary;
+User: How many policies are there? 
+Assistant: SELECT COUNT(DISTINCT PolicyNumber) AS NumberOfPolicies FROM di.PolicyComponent;
+User: Show different products for intermediary 'ADNConsultants'.
+Assistant: SELECT DISTINCT (ComponentVariantCode) FROM di.DifferentIntermediaryProducts WHERE PartyName = 'ADNConsultants'
 User: {{$input}}
 Assistant:
